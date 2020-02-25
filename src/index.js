@@ -20,7 +20,7 @@ var opts = [1, 2, 3];
 
 // opts, which is an array itself, will be put into an array
 // as the first element by the rest operator - this is probably
-// that what you intend to do
+// not what you intend to do
 login("fb", opts); // fb, [[1,2,3]]
 
 // use the spread operator to fix the above problem
