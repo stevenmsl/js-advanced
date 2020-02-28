@@ -3,10 +3,56 @@ import "../assets/css/style.css";
 const app = document.getElementById("app");
 app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
+/*  tagged templates.
+    tags allow you to parse template literals with a function */
+
+var name = "steve";
+var place = "van";
+var greeting = "Welcome";
+
+// h1 is a tag function
+function h1(strings, ...values) {
+  // the ‘strings’ parameter is an array consisting of the following elements
+  // 0: ""
+  // 1: " "
+  // 2: "! You are in "
+  // 3: ""
+  console.log(strings);
+  // rest operator is used so the values
+  // can be treated as an array
+  // ["Welcome", "steve", "van"]
+  console.log(values);
+  let result = "<h1>";
+  const count = strings.length;
+  for (var i = 0; i < count; i++) {
+    result += strings[i];
+    // assumption here is that strings.length -1  === values.length
+    // is always true
+    if (i !== count - 1) {
+      result += values[i];
+    }
+  }
+  result += "</h1>";
+  return result;
+}
+
+// this is just a function call - only the syntax is a bit different
+// There are 3 placeholders in the template: ${greeting}, ${name}, and ${place}, and
+// they will be used as delimiter to break down the template into an
+// array of strings.
+// So in this case the template will be broken down to 4 pieces of
+// string, which will be packed in an array passing in as the first
+// parameter to the h1 function.
+
+console.log(h1`${greeting} ${name}! You are in ${place}`);
+
+/* End - tagged templates */
+
 /* 
   Rest and spread operators        
 */
 
+/*
 // rest operator (...) : put the remaining parameters into an array
 function login(method, ...options) {
   console.log(arguments); // looks like an array but it isn’t, so you can’t use slice method on it
@@ -25,6 +71,8 @@ login("fb", opts); // fb, [[1,2,3]]
 
 // use the spread operator to fix the above problem
 login("fb", ...opts); // fb, [1,2,3]
+
+*/
 
 /* 
   End - Rest and spread operators        
