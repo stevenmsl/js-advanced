@@ -3,13 +3,34 @@ import "../assets/css/style.css";
 const app = document.getElementById("app");
 app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
+/* scopes */
+
+// local and global
+
+var currentLoc = "World"; // global
+var kmTraveled = 0; //global
+
+function toContinent(continent) {
+  var currentLoc = continent; // local
+  kmTraveled += 1000; // global
+  var continent_specific = "10 days";
+
+  console.log(currentLoc, kmTraveled, continent_specific);
+}
+// You can’t see continent_specific (local scope defined in the toContinent function) in the global scope
+console.log(currentLoc, kmTraveled, typeof continent_specific); // World, 0, undefined
+toContinent("America"); // America, 1000, 10 days
+console.log(currentLoc, kmTraveled); // World, 1000
+
+/* End - scopes */
+
 /*  tagged templates.
     tags allow you to parse template literals with a function */
 
+/*
 var name = "steve";
 var place = "van";
 var greeting = "Welcome";
-
 // h1 is a tag function
 function h1(strings, ...values) {
   // the ‘strings’ parameter is an array consisting of the following elements
@@ -45,7 +66,7 @@ function h1(strings, ...values) {
 // parameter to the h1 function.
 
 console.log(h1`${greeting} ${name}! You are in ${place}`);
-
+*/
 /* End - tagged templates */
 
 /* 
