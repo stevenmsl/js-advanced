@@ -5,6 +5,10 @@ app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
 /* scopes */
 
+var x = 10;
+console.log(x);
+console.log(window.x);
+
 // local and global
 
 var currentLoc = "World"; // global
@@ -21,6 +25,9 @@ function toContinent(continent) {
 console.log(currentLoc, kmTraveled, typeof continent_specific); // World, 0, undefined
 toContinent("America"); // America, 1000, 10 days
 console.log(currentLoc, kmTraveled); // World, 1000
+
+// block scope
+// var countries =
 
 /* End - scopes */
 
