@@ -5,17 +5,19 @@ app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
 /* scopes */
 
+/*
+// scope and window properties
 var x = 10;
 console.log(x);
-console.log(window.x);
+console.log(window.x); // not works as expected – it prints out undefined. webpack?
 
-// local and global
+// function and global scopes
 
 var currentLoc = "World"; // global
 var kmTraveled = 0; //global
 
 function toContinent(continent) {
-  var currentLoc = continent; // local
+  var currentLoc = continent; // function
   kmTraveled += 1000; // global
   var continent_specific = "10 days";
 
@@ -27,7 +29,17 @@ toContinent("America"); // America, 1000, 10 days
 console.log(currentLoc, kmTraveled); // World, 1000
 
 // block scope
-// var countries =
+console.log("--- block scope ---");
+var countries = ["Canada", "US", "Mexico"];
+for (var i = 0; i < countries.length; i++) {
+  console.log(countries[i]);
+}
+console.log(i);
+for (let j = 0; j < countries.length; j++) {
+  console.log(countries[j]);
+}
+console.log(typeof j === "undefined"); //true, as j only exists in the for loop block
+*/
 
 /* End - scopes */
 
