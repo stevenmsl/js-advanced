@@ -3,6 +3,46 @@ import "../assets/css/style.css";
 const app = document.getElementById("app");
 app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
+/* closure */
+const countries = ["Canada", "US", "Mexico"];
+var funcs = [];
+var funcs2 = [];
+
+function trackLocs() {
+  let loc = "";
+  for (let i = 0; i < countries.length; i++) {
+    loc = countries[i];
+    console.log("in trackLocs: ", loc); // Canada, US, Mexico
+    funcs.push(function() {
+      // just a reference back to the variable
+      // loc declared in this function
+      console.log(loc);
+    });
+
+    funcs2.push(
+      (loc => {
+        return function() {
+          console.log(loc);
+        };
+      })(loc) // call the anonymous function right away
+      // to introduce another scope that is visible to the function, which will be push to the array, returned by it
+    );
+  }
+}
+// The loc is set to ‘Mexico” before the function exits.
+// Since there are still functions in the funcs array
+// referencing the ‘loc’ variable will not be destroyed as it still being referenced.
+trackLocs();
+console.log(funcs); // pay attention to the scopes
+funcs[0](); // Mexico
+funcs[1](); // Mexico
+funcs[2](); // Mexico
+console.log(funcs2); // pay attention to the scopes
+funcs2[0](); // Canada
+funcs2[1](); // US
+funcs2[2](); // Mexico
+/* End - closure */
+
 /* scopes */
 
 /*
