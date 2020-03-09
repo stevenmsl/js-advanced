@@ -1,9 +1,42 @@
-import "../assets/css/style.css";
+//import "../assets/css/style.css";
 
 const app = document.getElementById("app");
 app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
+/* this */
+
+console.log(this);
+this.level = 0;
+
+var wizard = {
+  level: 100,
+  reportLevel: function() {
+    console.log(this.level);
+  },
+  reportLevelArrowFunc: () => {
+    console.log(this.level);
+  }
+};
+
+var firstOrderWizard = {
+  level: 1000
+};
+
+wizard.reportLevel(); // 100
+wizard.reportLevelArrowFunc(); // 0
+var reportLevel = wizard.reportLevel;
+var reportLevelArrowFunc = wizard.reportLevelArrowFunc;
+reportLevel(); // undefined – which is weird. I am expecting it’s 0
+reportLevelArrowFunc(); // 0
+//this.reportLevel = wizard.reportLevel;
+// this.reportLevel(); // 0
+firstOrderWizard.myLevel = wizard.reportLevel;
+firstOrderWizard.myLevelArrowFunc = wizard.reportLevelArrowFunc;
+firstOrderWizard.myLevel(); // 1000
+firstOrderWizard.myLevelArrowFunc(); // 0
+
 /* closure */
+/*
 const countries = ["Canada", "US", "Mexico"];
 var funcs = [];
 var funcs2 = [];
@@ -41,6 +74,8 @@ console.log(funcs2); // pay attention to the scopes
 funcs2[0](); // Canada
 funcs2[1](); // US
 funcs2[2](); // Mexico
+
+*/
 /* End - closure */
 
 /* scopes */
