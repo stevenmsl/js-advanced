@@ -3,8 +3,41 @@
 const app = document.getElementById("app");
 app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
-/* this */
+/* oop : new keyword */
+/*
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
 
+Person.isWizard = false; // not visible to subclasses (arlo)
+
+Person.prototype.isWizard_base = true; // visible to subclasses (arlo)
+
+Person.__proto__.isWizard_proto = true;
+
+// you can think of the new keyword is performing the following tasks:
+// - create a new object and set its properties by calling Person function
+// - point the new object’s __proto_ to Person’s prototype property
+// - return the new object
+
+var arlo = new Person("Arlo", "Lin");
+// from base class perspective
+
+// isWizard_base is not visible to Person
+console.log(typeof Person.isWizard_base === "undefined"); //true
+console.log(Person.isWizard_proto); //true
+
+// from subclass perspective
+console.log(arlo.__proto__ === Person.prototype); // true
+console.log(typeof arlo.isWizard === "undefined"); // true
+console.log(arlo.isWizard_base); // true
+*/
+/* end - oop */
+
+/* this */
+/* need to revisit */
+/*
 console.log(this);
 this.level = 0;
 
@@ -34,6 +67,8 @@ firstOrderWizard.myLevel = wizard.reportLevel;
 firstOrderWizard.myLevelArrowFunc = wizard.reportLevelArrowFunc;
 firstOrderWizard.myLevel(); // 1000
 firstOrderWizard.myLevelArrowFunc(); // 0
+*/
+/* end this */
 
 /* closure */
 /*
