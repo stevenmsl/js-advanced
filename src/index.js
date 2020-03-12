@@ -3,6 +3,64 @@
 const app = document.getElementById("app");
 app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
+/* oop : classical inheritance */
+/*
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+Person.fullName = function() {
+  return `${this.firstName} ${this.lastName}`;
+};
+
+Person.prototype.fullName_base = function() {
+  return `${this.firstName} ${this.lastName}`;
+};
+
+function Employee(firstName, lastName, jobTitle) {
+  Person.call(this, firstName, lastName);
+  this.jobTitle = jobTitle;
+}
+
+// Don’t treat Employee or Person as the same concept of classes in the classical inheritance.
+// Employee is not a subclass of Person per se. There are merely functions that define the logic
+// to add properties to "this". You want to construct a chain so that the new objects
+// can search up the chain to find the methods defined both in the Employee and Person’s prototype property,
+// and to be both an instance of Employee and Person.
+// Note that when you use ‘new’ keyword to create an object from Employee,
+// the new object’s _proto__ will point to Employee’s prototype.
+Employee.prototype = Object.create(Person); // wrong, won’t achieve inheritance
+var arloFake = new Employee("Arlo", "Lin", "CEO");
+console.log("arloFake is an instance of Person:", arloFake instanceof Person); // false
+console.log(typeof arloFake.fullName === "undefined"); // false,
+console.log(typeof arloFake.fullName_base === "undefined"); // true
+
+// This is the key to achieve classical inheritance
+Employee.prototype = Object.create(Person.prototype);
+var arloReal = new Employee("Arlo", "Lin", "CEO");
+console.log("arloReal is an instance of Person:", arloReal instanceof Person); // true
+// You can’t see any functions or properties added directly to Person,
+// and therefore you can’t treat it like a class.
+console.log(typeof arloReal.fullName === "undefined"); // true,
+//
+console.log(typeof arloReal.fullName_base === "undefined"); // false
+
+Employee.prototype.nameAndTitle = function() {
+  return `${this.firstName} ${this.lastName} ${this.jobTitle}`;
+};
+
+// arlo is an instance of employee
+//
+var arlo = new Employee("Arlo", "Lin", "Owner");
+
+console.log(arlo instanceof Employee); // true
+console.log(arlo instanceof Person); // true
+console.log(arlo.nameAndTitle()); // Arlo Lin Owner
+
+*/
+/* end - oop: classical inheritance */
+
 /* oop : new keyword */
 /*
 function Person(firstName, lastName) {
