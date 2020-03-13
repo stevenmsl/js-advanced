@@ -3,6 +3,49 @@
 const app = document.getElementById("app");
 app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
+/* oop : class */
+/*
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+Person.prototype.fullName_base = function() {
+  return `${this.firstName} ${this.lastName}`;
+};
+
+// es6 syntactic sugar
+class Employee extends Person {
+  constructor(firstName, lastName, jobTitle) {
+    super(firstName, lastName);
+    this.jobTitle = jobTitle;
+  }
+}
+var arlo = new Employee("Arlo", "Lin", "Owner");
+console.log(arlo instanceof Person);
+console.log(Employee.prototype.constructor === Employee); // true
+console.log(arlo.fullName_base()); // Arlo Lin
+console.log(arlo.jobTitle); // Owner
+
+function Employee2(firstName, lastName, jobTitle) {
+  Person.call(this, firstName, lastName);
+  this.jobTitle = jobTitle;
+}
+
+// mimic inheritance - ES5 way
+Employee2.prototype = Object.create(Person.prototype);
+// you also need to replace the constructor so it would
+// be the same as using the class extends syntax
+console.log(Employee2.prototype.constructor === Person); // true
+Employee2.prototype.constructor = Employee2;
+
+var arlo2 = new Employee2("Arlo", "Lin", "Owner");
+console.log(arlo2 instanceof Person);
+console.log(Employee2.prototype.constructor === Employee2); // true
+console.log(arlo2.fullName_base()); // Arlo Lin
+console.log(arlo2.jobTitle); // Owner
+*/
+/* end - oop : class */
+
 /* oop :  closure */
 /*
 function Device(kind) {
