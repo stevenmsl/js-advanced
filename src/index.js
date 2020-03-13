@@ -3,6 +3,21 @@
 const app = document.getElementById("app");
 app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
+/* oop :  closure */
+/*
+function Device(kind) {
+  this.kind = kind;
+  this.printKind = function() {
+    // You are referencing the constructor parameter kind not the property kind
+    console.log(kind);
+  };
+}
+var product = new Device("iPhone");
+product.kind = "radio";
+product.printKind(); // iPhone
+*/
+/* end - oop : closure */
+
 /* oop : classical inheritance */
 /*
 function Person(firstName, lastName) {
