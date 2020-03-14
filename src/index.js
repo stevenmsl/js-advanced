@@ -3,6 +3,29 @@
 const app = document.getElementById("app");
 app.innerHTML = "<h1>Advanced JavaScript</h1>";
 
+/* async programming : Promise */
+/*
+var eatMealAsync = new Promise(resolve => {
+  resolve();
+});
+
+// This is async so it won’t execute until the whole file being parsed.
+// By that time the “doneEating” var has been declared and defined.
+eatMealAsync.then(() => {
+  console.log(doneEating);
+});
+
+// this is sync and it will execute right away before the "doneEating" var is defined
+var eatMeal = (msg => {
+  return typeof msg === "undefined";
+})(doneEating);
+
+console.log(eatMeal);
+
+let doneEating = "done eating";
+*/
+/* end - async programming : Promise */
+
 /* oop : class */
 /*
 function Person(firstName, lastName) {
